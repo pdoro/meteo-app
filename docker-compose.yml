@@ -1,0 +1,21 @@
+version : '3'
+services:
+
+  weather-app:
+    build : .
+    image : meteo:latest
+    ports:
+      - 80:8080
+
+  remote-weather-app:
+    build : ../remote_meteo_service
+    image : remote_meteo:latest
+    expose :
+      - 8080
+
+  admin-ui:
+    container_name : admin_ui
+    build : ../actuator_admin
+    image : actuator_ui:latest
+    ports :
+      - 81:8080

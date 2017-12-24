@@ -1,0 +1,49 @@
+
+logging:
+  level:
+    com.github.benmanes.caffeine.cache: TRACE
+    org.springframework.cache: TRACE
+
+spring:
+  cache:
+    cache-names: reports
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=5m,recordStats
+  boot:
+      admin:
+        url: http://admin-ui:8080
+
+security:
+  basic:
+    enabled: false
+
+#----- Actuator Configuration -----#
+management:
+
+  server:
+    address: 127.0.0.1
+
+  security:
+    enabled: false
+
+  endpoints:
+      web:
+        expose: "*"
+
+  endpoint:
+      shutdown:
+        enabled: true
+
+  application:
+    name: Meteo Service
+
+#-----------------------------------#
+
+xml:
+  context_path: com.pdomingo.business.entities.xml
+
+remote_ws:
+  soap:
+    url: http://remote-weather-app:8080/ws
+  rest:
+    url: http://remote-weather-app:8080/rest/
