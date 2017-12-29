@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:mt="http://127.0.0.1/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <mt:getMeteoReportRequest>
+         <mt:name>London</mt:name>
+      </mt:getMeteoReportRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

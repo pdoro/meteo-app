@@ -1,0 +1,57 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://127.0.0.1/ws"
+           targetNamespace="http://127.0.0.1/ws" elementFormDefault="qualified">
+
+	<xs:element name="getMeteoReportRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getMeteoReportResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="meteo_report" type="tns:report"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="report">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="elevation" type="xs:int"/>
+			<xs:element name="temperature" type="tns:temperature"/>
+			<xs:element name="wind" type="tns:wind"/>
+			<xs:element name="ultraviolet" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="temperature">
+		<xs:sequence>
+			<xs:element name="max" type="xs:int"/>
+			<xs:element name="min" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="wind">
+		<xs:sequence>
+			<xs:element name="direction" type="tns:direction"/>
+			<xs:element name="speed" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="direction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="W"/>
+			<xs:enumeration value="NE"/>
+			<xs:enumeration value="NW"/>
+			<xs:enumeration value="SE"/>
+			<xs:enumeration value="SW"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

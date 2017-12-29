@@ -5,6 +5,9 @@ logging:
     org.springframework.cache: TRACE
 
 spring:
+  application:
+    name: Meteo Service
+
   cache:
     cache-names: reports
     caffeine:
@@ -33,9 +36,6 @@ management:
   endpoint:
       shutdown:
         enabled: true
-
-  application:
-    name: Meteo Service
 
 #-----------------------------------#
 
