@@ -1,8 +1,8 @@
 package com.pdomingo.business.services.impls;
 
-import com.pdomingo.business.entities.WeatherReport;
 import com.pdomingo.business.services.WeatherReporter;
 import com.pdomingo.business.services.WeatherService;
+import com.pdomingo.entities.json.WeatherReport;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

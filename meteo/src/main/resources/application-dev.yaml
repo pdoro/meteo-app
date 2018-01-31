@@ -40,7 +40,7 @@ management:
 #-----------------------------------#
 
 xml:
-  context_path: com.pdomingo.business.entities.xml
+  context_path: com.pdomingo.entities.soap_xml
 
 remote_ws:
   soap:

@@ -1,8 +1,10 @@
 package com.pdomingo.webapp;
 
-import com.pdomingo.entities.GetMeteoReportRequest;
-import com.pdomingo.entities.GetMeteoReportResponse;
-import com.pdomingo.entities.Report;
+import com.pdomingo.config.WebServiceConfig;
+import com.pdomingo.entities.soap_xml.GetMeteoReportRequest;
+import com.pdomingo.entities.soap_xml.GetMeteoReportResponse;
+import com.pdomingo.entities.soap_xml.Report;
+import com.pdomingo.persistence.MeteoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;

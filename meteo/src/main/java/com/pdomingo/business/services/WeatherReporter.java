@@ -1,6 +1,6 @@
 package com.pdomingo.business.services;
 
-import com.pdomingo.business.entities.WeatherReport;
+import com.pdomingo.entities.json.WeatherReport;
 
 /**
  *

@@ -1,9 +1,9 @@
-package com.pdomingo.webapp;
+package com.pdomingo.persistence;
 
-import com.pdomingo.entities.Direction;
-import com.pdomingo.entities.Report;
-import com.pdomingo.entities.Temperature;
-import com.pdomingo.entities.Wind;
+import com.pdomingo.entities.soap_xml.Direction;
+import com.pdomingo.entities.soap_xml.Report;
+import com.pdomingo.entities.soap_xml.Temperature;
+import com.pdomingo.entities.soap_xml.Wind;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

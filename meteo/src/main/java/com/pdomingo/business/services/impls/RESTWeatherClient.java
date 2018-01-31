@@ -1,8 +1,7 @@
 package com.pdomingo.business.services.impls;
 
-import com.pdomingo.business.entities.WeatherReport;
-import com.pdomingo.business.entities.json.RemoteWeatherReport;
 import com.pdomingo.business.services.WeatherService;
+import com.pdomingo.entities.json.WeatherReport;
 import com.pdomingo.webapp.config.AppConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,9 +30,7 @@ public class RESTWeatherClient implements WeatherService {
 
 		log.info("Performing remote REST request to {}", url);
 
-		RemoteWeatherReport report = restTemplate.getForObject(url, RemoteWeatherReport.class);
-		WeatherReport weatherReport = WeatherReport.fromRemoteReport(report);
-
-		return weatherReport;
+		WeatherReport report = restTemplate.getForObject(url, WeatherReport.class);
+		return report;
 	}
 }

@@ -1,4 +1,4 @@
-package com.pdomingo.webapp;
+package com.pdomingo.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;

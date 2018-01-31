@@ -1,8 +1,11 @@
 package com.pdomingo.business.services.impls;
 
-import com.pdomingo.business.entities.WeatherReport;
-import com.pdomingo.business.entities.xml.*;
 import com.pdomingo.business.services.WeatherService;
+import com.pdomingo.entities.json.WeatherReport;
+import com.pdomingo.entities.soap_xml.Direction;
+import com.pdomingo.entities.soap_xml.GetMeteoReportRequest;
+import com.pdomingo.entities.soap_xml.GetMeteoReportResponse;
+import com.pdomingo.entities.soap_xml.Report;
 import com.pdomingo.webapp.config.AppConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
@@ -46,7 +49,7 @@ public class SOAPWeatherClient
 				.cityElevation(report.getElevation())
 				.maxTemperature(report.getTemperature().getMax())
 				.minTemperature(report.getTemperature().getMin())
-				.windDirection(translateWind(report.getWind().getDirection()))
+				.windDirection(null)
 				.windSpeed(report.getWind().getSpeed())
 				.build();
 

@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://127.0.0.1/ws", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.pdomingo.business.entities.xml;
+package com.pdomingo.entities.soap_xml;

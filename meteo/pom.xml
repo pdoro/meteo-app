@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.pdomingo</groupId>
-	<artifactId>weather-app</artifactId>
+	<artifactId>meteo-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>weather</name>
+	<name>meteo</name>
 	<description>Weather demo project for Spring Boot</description>
 
 	<parent>
@@ -103,6 +103,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.pdomingo</groupId>
+			<artifactId>weather-entities</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>

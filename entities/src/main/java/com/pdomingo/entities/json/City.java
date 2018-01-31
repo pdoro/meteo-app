@@ -1,18 +1,17 @@
-package com.pdomingo.persistence.db_entities;
+package com.pdomingo.entities.json;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-//import javax.persistence.Entity;
-
-//@Entity
-@Data
-@AllArgsConstructor
+/**
+ *
+ */
 public class City {
 
-	private long id;
-
+	@JsonProperty("name")
 	private String name;
+
+	@JsonProperty("elevation")
+	private int elevation;
 
 	/*--------------------- Constructors ---------------------*/
 

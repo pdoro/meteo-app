@@ -1,9 +1,8 @@
 package com.pdomingo.webapp.controllers;
 
-import com.pdomingo.business.entities.WeatherReport;
 import com.pdomingo.business.services.WeatherReporter;
 import com.pdomingo.business.services.WeatherService;
-import lombok.RequiredArgsConstructor;
+import com.pdomingo.entities.json.WeatherReport;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,7 +30,7 @@ public class WeatherController {
 	/*--------------------- Mappings ---------------------*/
 
 	@GetMapping("/")
-	private List<WeatherReport> getReports() {
+	private List<WeatherReport> getAllReports() {
 		return Collections.emptyList();
 	}
 
