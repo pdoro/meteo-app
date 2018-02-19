@@ -1,0 +1,43 @@
+site_name: Meteo Documentation
+theme:
+  name: 'material'
+  palette:
+    primary: 'teal'
+    accent: 'indigo'
+  font:
+    code: 'Source Sans Pro'
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/pdoro/meteo-app'
+    - type: 'linkedin'
+      link: 'https://linkedin.com/in/pablo-domingo-rojo-ba027a106/'
+
+# Repository
+repo_name: 'pdoro/meteo-app'
+repo_url: 'https://github.com/pdoro/meteo-app'
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+

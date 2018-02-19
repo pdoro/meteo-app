@@ -18,3 +18,18 @@ services:
     image : actuator_ui:latest
     ports :
       - 81:8080
+
+#  mongo:
+#    image: mongo:latest
+#    expose:
+#      - 27017
+
+#  redis:
+#    image: redis:latest
+#    expose:
+#      - 6379
+
+#  nginx:
+#    image: nginx:latest
+#    ports:
+#      - 80:80
