@@ -1,10 +1,9 @@
 package com.pdomingo.entities.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
-/**
- *
- */
+@Data
 public class Temperature {
 
 	@JsonProperty("min_temperature")

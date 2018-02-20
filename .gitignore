@@ -1,6 +1,8 @@
 ### Mac ###
 .DS_Store 
 
+docker-data/
+
 ### STS ###
 .apt_generated
 .classpath

@@ -1,7 +1,9 @@
 package com.pdomingo.business.services.impls;
 
 import com.pdomingo.business.services.WeatherService;
+import com.pdomingo.entities.json.City;
 import com.pdomingo.entities.json.WeatherReport;
+import com.pdomingo.entities.json.WindInfo;
 import com.pdomingo.entities.soap_xml.Direction;
 import com.pdomingo.entities.soap_xml.GetMeteoReportRequest;
 import com.pdomingo.entities.soap_xml.GetMeteoReportResponse;
@@ -44,29 +46,32 @@ public class SOAPWeatherClient
 
 		Report report = response.getMeteoReport();
 
+		/*
 		WeatherReport weatherReport = WeatherReport.builder()
-				.cityName(report.getName())
+				.city(new City())
 				.cityElevation(report.getElevation())
 				.maxTemperature(report.getTemperature().getMax())
 				.minTemperature(report.getTemperature().getMin())
 				.windDirection(null)
 				.windSpeed(report.getWind().getSpeed())
 				.build();
+		*/
+		// TODO: fix
 
-		return weatherReport;
+		return null;
 	}
 
-	private WeatherReport.Direction translateWind(Direction windDirection) {
+	private WindInfo.Direction translateWind(Direction windDirection) {
 
 		switch (windDirection) {
-			case N:  return WeatherReport.Direction.NORTH;
-			case S:  return WeatherReport.Direction.SOUTH;
-			case E:  return WeatherReport.Direction.EAST;
-			case W:  return WeatherReport.Direction.WEST;
-			case NE: return WeatherReport.Direction.NORTH_EAST;
-			case NW: return WeatherReport.Direction.NORTH_WEST;
-			case SE: return WeatherReport.Direction.SOUTH_EAST;
-			case SW: return WeatherReport.Direction.SOUTH_WEST;
+			case N:  return WindInfo.Direction.NORTH;
+			case S:  return WindInfo.Direction.SOUTH;
+			case E:  return WindInfo.Direction.EAST;
+			case W:  return WindInfo.Direction.WEST;
+			case NE: return WindInfo.Direction.NORTH_EAST;
+			case NW: return WindInfo.Direction.NORTH_WEST;
+			case SE: return WindInfo.Direction.SOUTH_EAST;
+			case SW: return WindInfo.Direction.SOUTH_WEST;
 			default: throw new IllegalArgumentException("Invalid wind direction");
 		}
 	}

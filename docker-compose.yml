@@ -6,23 +6,29 @@ services:
     image : meteo:latest
     ports:
       - 80:8080
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"  
 
-  remote-weather-app:
-    build : ./meteo_services
-    image : remote_meteo:latest
-    expose :
-      - 8080
+#  remote-weather-app:
+#    build : ./meteo_services
+#    image : external_meteo:latest
+#    expose :
+#      - 8080
+#    environment:
+#      - "SPRING_PROFILES_ACTIVE=dev"
 
-  admin-ui:
-    build : ./actuator_admin
-    image : actuator_ui:latest
-    ports :
-      - 81:8080
+#  admin-ui:
+#    build : ./actuator_admin
+#    image : actuator_ui:latest
+#    ports :
+#      - 81:8080
 
-#  mongo:
-#    image: mongo:latest
-#    expose:
-#      - 27017
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./docker-data/mongo:/data/db
 
 #  redis:
 #    image: redis:latest

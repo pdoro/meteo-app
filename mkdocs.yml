@@ -4,8 +4,8 @@ theme:
   palette:
     primary: 'teal'
     accent: 'indigo'
-  font:
-    code: 'Source Sans Pro'
+  # font:
+    #    code: 'Source Sans Pro'
 
 extra:
   social:
@@ -20,7 +20,8 @@ repo_url: 'https://github.com/pdoro/meteo-app'
 
 markdown_extensions:
   - admonition
-  - codehilite
+  - codehilite:
+      linenums: true
   - footnotes
   - toc:
       permalink: true

@@ -3,6 +3,7 @@ logging:
   level:
     com.github.benmanes.caffeine.cache: TRACE
     org.springframework.cache: TRACE
+    com.pdomingo: TRACE
 
 spring:
   application:
@@ -15,6 +16,11 @@ spring:
   boot:
       admin:
         url: http://admin-ui:8080
+
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
 
 security:
   basic:

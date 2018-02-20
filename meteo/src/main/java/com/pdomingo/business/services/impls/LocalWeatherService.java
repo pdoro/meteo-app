@@ -3,61 +3,54 @@ package com.pdomingo.business.services.impls;
 import com.pdomingo.business.services.WeatherReporter;
 import com.pdomingo.business.services.WeatherService;
 import com.pdomingo.entities.json.WeatherReport;
+import com.pdomingo.persistence.ReportMongoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
 @Slf4j
 public class LocalWeatherService implements WeatherService, WeatherReporter {
 
-	private static final Map<String, WeatherReport> reports = new HashMap<>();
+	private final ReportMongoRepository reportRepository;
 
-	static {
-		reports.put("Madrid",
-				WeatherReport.builder()
-				.cityName("Madrid")
-				.cityElevation(732)
-				.minTemperature(0)
-				.maxTemperature(10)
-				.humidityPercentage(10)
-				.rainProbability(23)
-				.snowProbability(0)
-				.ultravioletFactor(1)
-				.windDirection(WeatherReport.Direction.NORTH_EAST)
-				.warnings(Collections.emptyList())
-				.build());
+	@Inject
+	public LocalWeatherService(ReportMongoRepository reportRepository) {
+		this.reportRepository = reportRepository;
 	}
 
-
 	@Override
+	@Cacheable
 	public WeatherReport getReport(String city, Optional<LocalDate> start, Optional<LocalDate> end) {
-		try {
-			Thread.sleep(1000);
-			log.info("Request processed");
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return reports.getOrDefault(city, null);
+		log.trace("Report request for {}", city);
+		WeatherReport weatherReport = reportRepository.findByCityName(city).get();
+
+		// TODO IMPROVE
+
+		log.trace("Found report #{}", weatherReport.getId());
+
+		return weatherReport;
 	}
 
 	@Override
-	@CachePut(value = "reports", key = "#report.getCityName()")
+	@CachePut(value = "reports", key = "#report.getCity().getName()")
 	public WeatherReport register(WeatherReport report) {
-		reports.put(report.getCityName(), report);
-		return report;
+		log.trace("Inserting report for {}", report.getCity().getName());
+		WeatherReport inserted = reportRepository.insert(report);
+		log.trace("Inserted report #{} ", inserted.getId());
+
+		return inserted;
 	}
 
 	@Override
 	@CacheEvict(value = "reports")
 	public void delete(String city) {
-		reports.remove(city);
+		// delete by cityName
 	}
 }

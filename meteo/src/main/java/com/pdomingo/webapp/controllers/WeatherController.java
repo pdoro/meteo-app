@@ -20,12 +20,16 @@ import java.util.Optional;
 @Slf4j
 public class WeatherController {
 
-	@Inject
-	@Qualifier("dispatcher")
-	private WeatherService weatherService;
+
+	private final WeatherService weatherService;
+	private final WeatherReporter weatherReporter;
 
 	@Inject
-	private WeatherReporter weatherReporter;
+	public WeatherController(@Qualifier("dispatcher") WeatherService weatherService,
+	                         WeatherReporter weatherReporter) {
+		this.weatherService = weatherService;
+		this.weatherReporter = weatherReporter;
+	}
 
 	/*--------------------- Mappings ---------------------*/
 
@@ -34,7 +38,7 @@ public class WeatherController {
 		return Collections.emptyList();
 	}
 
-	@GetMapping("/{city:[a-zA-Z]+}")
+	@GetMapping("/{city:[a-zA-Z\\s]+}")
 	private WeatherReport getWeatherReport(
 			@PathVariable String city,
 
@@ -46,7 +50,7 @@ public class WeatherController {
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 					Optional<LocalDate> endDate)
 	{
-		log.info("Received request to get weather report for {}", city);
+		log.trace("Received request to get weather report for {}", city);
 		WeatherReport report = weatherService.getReport(city, startDate, endDate);
 		return report;
 	}
@@ -54,14 +58,14 @@ public class WeatherController {
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
 	private void reportWeather(@RequestBody WeatherReport report) {
-		log.info("Received request to create weather report for {}", report.getCityName());
+		log.trace("Received request to create weather report for {}", report.getCity().getName());
 		weatherReporter.register(report);
 	}
 
 	@DeleteMapping("/{city:[a-zA-Z]+}")
 	@ResponseStatus(HttpStatus.OK)
 	private void deleteReport(@PathVariable String city) {
-		log.info("Received request to delete weather report for {}", city);
+		log.trace("Received request to delete weather report for {}", city);
 		weatherReporter.delete(city);
 	}
 

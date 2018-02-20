@@ -1,6 +1,6 @@
-package com.pdomingo.config;
+package com.pdomingo.webapp.config;
 
-import com.pdomingo.persistence.ReportRepository;
+import com.pdomingo.persistence.ReportMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 public class StartupLoader implements ApplicationRunner {
 
 	private final ResourceLoader   resourceLoader;
-	private final ReportRepository reportRepository;
+	private final ReportMongoRepository reportRepository;
 
 	@Autowired
-	public StartupLoader(ResourceLoader resourceLoader, ReportRepository reportRepository) {
+	public StartupLoader(ResourceLoader resourceLoader, ReportMongoRepository reportRepository) {
 		this.resourceLoader = resourceLoader;
 		this.reportRepository = reportRepository;
 	}
